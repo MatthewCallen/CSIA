@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. Testing github branching testing vscode.")
+    return HttpResponse("Testing for progress check.")

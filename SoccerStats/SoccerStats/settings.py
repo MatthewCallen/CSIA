@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
+#py manage.py makemigrations
+#py manage.py migrate
+
 INSTALLED_APPS = [
     'SoccerDB.apps.SoccerdbConfig',
     'django.contrib.admin',
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'articles',
 ]
 
 MIDDLEWARE = [

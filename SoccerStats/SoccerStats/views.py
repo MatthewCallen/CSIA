@@ -1,31 +1,41 @@
 #Purpose of views: render html web pages
 import random
 from django.http import HttpResponse, response
+from django.template.loader import render_to_string 
+from articles.models import Article
 
 
-def home_view(request):
+
+
+def home_view(request, id=None, *args, **kwargs):
     """
     take in a request
     return HTML as a response
     """
     name = "Matthew!" # hard coded
-    number = random.randint(10,1233123) #pseudo random(not truly random)
+    random_id = random.randint(1,4) #pseudo random(not truly random)
 
-    # from the databse??
+    # from the database??
+    article_obj = Article.objects.get(id=random_id)
+    article_queryset = Article.objects.all()
+
     #article_name = 
     #article_content = 
 
+    context = {
+        "object_list": article_queryset,
+        "object": article_obj, 
+        "title": article_obj.title,
+        "id": article_obj.id,
+        "content": article_obj.content
 
+    }
     # Django Templates
-    H1_STRING = f"""
-    <h1>Hello {name} - {number}</h1>
-    """
-
-    P_STRING = f"""
-    <p>Hi {name} - {number}</p>
-    """
-
-    HTML_STRING = H1_STRING + P_STRING
+    HTML_STRING = render_to_string("home-view.html", context=context)
+    #HTML_STRING = """
+    #<h1>{title} (id: {id})</h1>
+    #<p>{content}</p>
+    #""".format(**context)
     return HttpResponse(HTML_STRING)
 
 

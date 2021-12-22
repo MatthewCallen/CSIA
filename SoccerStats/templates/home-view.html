@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{object.title}} (id: {{id}})</h1>
+<h1>{{object.title}}</h1>
 <p>{{content}}</p>
+
+<h1> <a href ='/premtable/'>Click to access Premier League Table</a></h1>
 
 <ul>
     {% for x in object_list %}
